@@ -1,0 +1,10 @@
+#!/opt/ucl/bin/bash
+echo "Usage:"
+echo "long_mv [glob] [dir]"
+echo "performing:"
+echo "> find . -name \"*.$1\" -exec mv --target-directory=$2 '{}' +"
+find . -name "*.$1" -exec mv --target-directory=$2 '{}' +
+
+#echo "> find . -name \"*.$1\" | xargs -0 mv -t $2"
+#find . -name "*.$1" | xargs -0 mv -t $2
+

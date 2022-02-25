@@ -1,0 +1,3 @@
+#!/opt/ucl/bin/perl -wpi
+print "Usage: >dos2unix";
+s/(\d+)G/$1/g
