@@ -37,3 +37,5 @@ for up_id in id_list:
                 if entry.startswith('DR   GO;'):
                     fields = entry[9:].split('; ')
                     print(f'{up_id},{fields[0]},{fields[2]}')
+    else:
+        sys.stderr.write(f'FAILED: {uniprot_uri}{up_id}.txt\n')
