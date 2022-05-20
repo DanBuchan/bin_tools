@@ -23,16 +23,18 @@ with open(file, "r", encoding="utf-8") as fhIn:
     for line in fhIn:
         id_list.append(line.rstrip())
 
+
+
 # id_list = ['G3U3H7']
 # useful test record
+if field == 'GO':
+    print('uniprot_id,go_id,evidence')
 for up_id in id_list:
     sys.stderr.write(f'GETTING: {uniprot_uri}{up_id}.txt\n')
     r = requests.get(f'{uniprot_uri}{up_id}.txt')
     if r.status_code == 200:
         file_data = r.text.split("\n")
         # Now we can just match:case the field we want
-        if field == 'GO':
-            print('uniprot_id,go_id,evidence')
             for entry in file_data:
                 if entry.startswith('DR   GO;'):
                     fields = entry[9:].split('; ')
