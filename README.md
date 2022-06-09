@@ -6,3 +6,4 @@
 * `spawn_desktop.py` - open a set of applications and windows automatically
 * `long_mv` - run mv over a dir that has too many files for commandline invocation of mv
 * `dos2unix` - perl script that subs some character in place in an ascii/utf-8 file
+* `prep_cath_fasta.py` - take the cath domain seqs fasta and domain list and add the H family to the fasta file 
