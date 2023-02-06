@@ -16,7 +16,7 @@ import sys
 field = 'GO'
 uniprot_uri = 'https://www.uniprot.org/uniprot/'
 file = sys.argv[1]
-print(file)
+# print(file)
 
 id_list = []
 with open(file, "r", encoding="utf-8") as fhIn:
@@ -35,6 +35,7 @@ for up_id in id_list:
     if r.status_code == 200:
         file_data = r.text.split("\n")
         # Now we can just match:case the field we want
+        if field == 'GO':
             for entry in file_data:
                 if entry.startswith('DR   GO;'):
                     fields = entry[9:].split('; ')
