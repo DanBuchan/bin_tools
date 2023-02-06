@@ -13,7 +13,7 @@ pfam_family_id = None
 current_family = []
 family_count = 0
 read_count = 0
-with open(pfam_a_file, "r", encoding="utf-8") as fh:
+with open(pfam_a_file, "r", encoding="ISO-8859-1") as fh:
     for line in fh:
         try:
             # if family_count == 2:
