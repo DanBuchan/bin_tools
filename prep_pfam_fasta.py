@@ -14,8 +14,8 @@ current_family = []
 family_count = 0
 read_count = 0
 with open(pfam_a_file, "r", encoding="utf-8") as fh:
-    try:
-        for line in fh:
+    for line in fh:
+        try:
             # if family_count == 2:
             #     exit()
             if line.startswith("//"):
@@ -37,9 +37,9 @@ with open(pfam_a_file, "r", encoding="utf-8") as fh:
                 read_count += 1
             elif not line.startswith("#"):
                 current_family.append(line.rstrip())
-    except Exception as e:
-        print(f"CAUGHT ONE: {e}")
-        continue
+        except Exception as e:
+            print(f"CAUGHT ONE: {e}")
+            continue
 
 
 if len(current_family) != 0:
