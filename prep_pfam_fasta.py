@@ -1,9 +1,11 @@
 import sys
 import random
 
-# a missing one PF06248
-# bugged version 9066 families
-# grep on "#=GF AC" indicates families 19632
+"""
+Take a Pfam file in stockholm format and output a fasta version
+
+python3 prep_pfam_fasta.py ~/Data/pfam/Pfam-A.full.uniprot > output
+"""
 
 pfam_a_file = sys.argv[1]
 

@@ -1,5 +1,5 @@
 * `useful_python.py` - 2 handy python routines
-* `run_seq_analysis.py` - give it a fasta file and it'll run a command over each sequence
+* `run_seq_analysis.py` - give it a fasta file and it'll run a blast command over each sequence
 * `blast_dir_files.py` - old script that will take a dir of fasta files and run blast over each
 * `prep_fasta.py` - take a fasta file and flatten each seq on to one line
 * `split_fasta.py` - take a fasta file and split in to seperate files

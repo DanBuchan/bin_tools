@@ -1,5 +1,9 @@
 import sys
 
+"""
+Take a fasta file and output a version where headers get sequentially numbered
+"""
+
 count = 0
 with open(sys.argv[1], "r") as fh:
     for line in fh:
