@@ -1,7 +1,7 @@
 import requests
 import sys
 
-#
+"""
 # get_uniprot_field.py ids.txt
 #
 # Takes a file of IDs (one on each line) and retrieves some
@@ -10,7 +10,7 @@ import sys
 # Currently only support ID to GO terms
 #
 # Outputs a CSV file of the IDs
-#
+"""
 
 
 field = 'GO'

@@ -5,9 +5,11 @@ import sys
 from commandRunner.localRunner import *
 import os
 
-#
-# python3 run_seq_analysis.py --in_fasta test.fa --blast_command "/home/dbuchan/Applications/ncbi-blast-2.12.0+/bin/psiblast -query \$I1 -db /home/dbuchan/Data/uniref/unitest.fasta -out \$O1" --work_path /home/dbuchan/bin
-#
+"""
+give it a fasta file and it'll run a blast command over each sequence
+
+python3 run_seq_analysis.py --in_fasta test.fa --blast_command "/home/dbuchan/Applications/ncbi-blast-2.12.0+/bin/psiblast -query \$I1 -db /home/dbuchan/Data/uniref/unitest.fasta -out \$O1" --work_path /home/dbuchan/bin
+"""
 
 
 def write_output(outname, data):
