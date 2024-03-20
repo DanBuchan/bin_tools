@@ -1,16 +1,13 @@
 import sys
-import random
 
-"""
-Take a Pfam file in stockholm format and output a fasta version
-
-python3 prep_pfam_fasta.py ~/Data/pfam/Pfam-A.full.uniprot > output
-"""
+###
+# Take a Pfam file in stockholm format and output a fasta version
+# python3 prep_pfam_fasta.py ~/Data/pfam/Pfam-A.full.uniprot Pfam-A.full.uniprot.fa
 
 pfam_a_file = sys.argv[1]
 
-fhFasta = open('pfam_fasta.fa', "w")
-fhReps = open('reps.fasta.fa', "w")
+fhFasta = open(sys.argv[2], "w")
+
 pfam_family_id = None
 current_family = []
 family_count = 0
@@ -24,12 +21,12 @@ with open(pfam_a_file, "r", encoding="utf-8", errors="replace") as fh:
                 print(f"PRINTING: {pfam_family_id}")
                 for line in current_family:
                     entries = line.split()
+                    if "/" in entries[1]:
+                    ## We should probably tests for all invalid characters and just not output them here
+                    ## Might be worth outputting to STDOUT too
+                        continue
                     fhFasta.write(f">{entries[0]}|{pfam_family_id}\n")
                     fhFasta.write(f"{entries[1].replace('.','').replace('-','').upper()}\n")
-                random_rep = random.choice(current_family)
-                entries = random_rep.split()
-                fhReps.write(f">{entries[0]}|{pfam_family_id}\n")
-                fhReps.write(f"{entries[1].replace('.','').replace('-','').upper()}\n")
                 current_family = []
                 family_count += 1
                 continue
@@ -44,17 +41,14 @@ if len(current_family) != 0:
     print(f"PRINTING: {pfam_family_id}")
     for line in current_family:
         entries = line.split()
+        if "/" in entries[1]:
+            continue
         fhFasta.write(f">{entries[0]}|{pfam_family_id}\n")
         fhFasta.write(f"{entries[1].replace('.','').replace('-','').upper()}\n")
-    random_rep = random.choice(current_family)
-    entries = random_rep.split()
-    fhReps.write(f">{entries[0]}|{pfam_family_id}\n")
-    fhReps.write(f"{entries[1].replace('.','').replace('-','').upper()}\n")
     current_family = []
     family_count += 1
 
 fhFasta.close()
-fhReps.close()
 
 print(f"FAMILIES READ: {read_count}")
 print(f"FAMILIES PRINTED: {family_count}")
