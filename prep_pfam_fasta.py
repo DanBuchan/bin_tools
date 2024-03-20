@@ -17,7 +17,7 @@ with open(pfam_a_file, "r", encoding="utf-8", errors="replace") as fh:
         # if family_count == 2:
         #     exit()
         if line.startswith("//"):
-            if len(current_family) != 0:
+            if len(current_family) != 0 and pfam_family_id:
                 print(f"PRINTING: {pfam_family_id}")
                 for line in current_family:
                     entries = line.split()
@@ -28,6 +28,7 @@ with open(pfam_a_file, "r", encoding="utf-8", errors="replace") as fh:
                     fhFasta.write(f">{entries[0]}|{pfam_family_id}\n")
                     fhFasta.write(f"{entries[1].replace('.','').replace('-','').upper()}\n")
                 current_family = []
+                pfam_family_id = None
                 family_count += 1
                 continue
         elif line.startswith("#=GF AC"):
@@ -37,7 +38,7 @@ with open(pfam_a_file, "r", encoding="utf-8", errors="replace") as fh:
             current_family.append(line.rstrip())
 
 
-if len(current_family) != 0:
+if len(current_family) != 0 and pfam_family_id:
     print(f"PRINTING: {pfam_family_id}")
     for line in current_family:
         entries = line.split()
@@ -46,6 +47,7 @@ if len(current_family) != 0:
         fhFasta.write(f">{entries[0]}|{pfam_family_id}\n")
         fhFasta.write(f"{entries[1].replace('.','').replace('-','').upper()}\n")
     current_family = []
+    pfam_family_id = None
     family_count += 1
 
 fhFasta.close()
