@@ -30,9 +30,7 @@ def get_clan_membership(clan_data):
     for pfam in clan_data:
 
         if len(pfam['CLAN_ID']) > 0:
-            clan_membership[pfam['CLAN_ID']].append(pfam['PFAM_ID'])
-            clan_membership[pfam['CLAN_ID']]['VECTORS']=[]
-                                    
+            clan_membership[pfam['CLAN_ID']].append(pfam['PFAM_ID'])                           
         else:
             clan_membership['NO_CLAN'].append(pfam['PFAM_ID'])
     return(clan_membership)
