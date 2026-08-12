@@ -23,7 +23,8 @@ def read_pfam_clans_tsv(file):
 def get_clan_membership(clan_data):
     """
         take the data from read_pfam_clans_tsv() and return a dict of CLAN_ID to PFAM_ID.
-        there is a holding category for IDs in no clan
+        there is a holding category for IDs in no clan. There is also a 
+        hold list for clan vectors if you need it
     """
     clan_membership = defaultdict(list)
     for pfam in clan_data:
