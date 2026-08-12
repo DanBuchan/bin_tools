@@ -27,8 +27,11 @@ def get_clan_membership(clan_data):
     """
     clan_membership = defaultdict(list)
     for pfam in clan_data:
+
         if len(pfam['CLAN_ID']) > 0:
             clan_membership[pfam['CLAN_ID']].append(pfam['PFAM_ID'])
+            clan_membership[pfam['CLAN_ID']]['VECTORS']=[]
+                                    
         else:
             clan_membership['NO_CLAN'].append(pfam['PFAM_ID'])
     return(clan_membership)
